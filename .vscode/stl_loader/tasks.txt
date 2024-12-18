@@ -1,0 +1,46 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-std=c++17",
+                "-g",
+                "${workspaceFolder}/src/main.cpp",       // Source file
+                "-o", "${workspaceFolder}/stl_loader",  // Output binary
+                "-I${workspaceFolder}/include",         // Include directory for STL loader
+                "-I${workspaceFolder}/third/eigen"      // Include directory for Eigen
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        },
+
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-std=c++17",
+                "-g",
+                "${workspaceFolder}/src/main.cpp",       // Source file
+                "${workspaceFolder}/include/GradientSDF/MapGradPixelSdf.cpp",
+                "${workspaceFolder}/include/mesh/LayerdMarchingCubesNoColor.cpp",
+                "-o", "${workspaceFolder}/main",  // Output binary
+                "-I${workspaceFolder}/include",         // Include directory for STL loader
+                "-I${workspaceFolder}/third/eigen",      // Include directory for Eigen
+                "-I${workspaceFolder}/third/parallel_hashmap",      // Include directory for parallel_hashmap
+                "-I${workspaceFolder}/third/Sophus"      // Include directory for Sophus
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-clang",
+            "type": "shell",
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-std=c++17",
+                "-g",                                     // Debug symbols
+                "${workspaceFolder}/src/sdf_reading.cpp",        // Main source file
+                "${workspaceFolder}/include/GradientSDF/MapGradPixelSdf.cpp",
+                "${workspaceFolder}/include/mesh/LayeredMarchingCubesNoColor.cpp",
+                "-o", "${workspaceFolder}/sdf_reading",          // Output binary
+                "-I${workspaceFolder}/include",           // Include directory for STL loader
+                "-I${workspaceFolder}/third/eigen",       // Include directory for Eigen
+                "-I${workspaceFolder}/third/parallel_hashmap",
+                "-I${workspaceFolder}/third/Sophus"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "build-gcc",
+            "type": "shell",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-std=c++17",
+                "-g",                                     // Debug symbols
+                "${workspaceFolder}/src/main.cpp",        // Main source file
+                "${workspaceFolder}/include/GradientSDF/MapGradPixelSdf.cpp",
+                "${workspaceFolder}/include/mesh/LayeredMarchingCubesNoColor.cpp",
+                "-o", "${workspaceFolder}/main",          // Output binary
+                "-I${workspaceFolder}/include",           // Include directory for STL loader
+                "-I${workspaceFolder}/third/eigen",       // Include directory for Eigen
+                "-I${workspaceFolder}/third/parallel_hashmap",
+                "-I${workspaceFolder}/third/Sophus"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}

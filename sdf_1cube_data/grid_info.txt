@@ -1,0 +1,4 @@
+voxel size: 0.05
+voxel dim: 30 29 29
+voxel min: -14 -14 -14
+voxel max: 15 14 14
